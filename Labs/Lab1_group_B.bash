@@ -35,3 +35,14 @@ grep '^22' OS2.txt | awk '$4 <=50 {print $1,$2,$4}'
 # 10.
 awk 'NR>1{counter[$1]++} END{for(i in counter) printf "%-20s %s\n", i, counter[i]}' | sort -k2,2nr
 
+## BONUS
+
+# 11.
+
+awk 'NR>1{counter[$1]++; total++}
+END{
+	for(i in counter){
+	percent = (counter[i]/total)*100;
+	printf "%-20s %5d %6.2f%%\n", i, counter[i],percent
+}
+}' file.txt | sort -k2,2nr
