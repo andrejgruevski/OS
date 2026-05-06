@@ -1,0 +1,9 @@
+FROM eclipse-temurin
+
+WORKDIR /src/
+
+COPY src/ .
+
+RUN javac ExecutionCounter.java
+
+CMD ["java","ExecutionCounter"]
