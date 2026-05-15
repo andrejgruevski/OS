@@ -4,22 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 class MyThread extends Thread {
-    private String name;
-
-    public MyThread(String name) {
-        this.name = name;
-    }
-
+    static int counter=0;
     @Override
     public void run() {
-        System.out.println("Name of thread is " + name);
+        for (int i=0;i<20000;i++) {
+            counter++;
+        }
     }
 }
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         List<MyThread> threads = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            MyThread myThread = new MyThread("Thread " + i);
+            MyThread myThread = new MyThread();
             threads.add(myThread);
         }
 
@@ -29,6 +26,6 @@ public class Main {
         for(MyThread myThread : threads) {
             myThread.join();
         }
-        System.out.println("END");
+        System.out.println(MyThread.counter);
     }
 }
