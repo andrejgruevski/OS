@@ -45,26 +45,26 @@ public class ParallelVectorDifference {
 
         MyThreads[]threads = new MyThreads[m];
 
-        int chunkSize = n/m;
+        int chunkSize = n/m; // golemina na sekoe parche pr: niza od 12 elementi, 12/4 = 3, sekoja nishka obrabotuva 3 elementi
 
         for (int i = 0; i < m; i++) {
-            int start = i*chunkSize;
+            int start = i*chunkSize; // sekoja nishka pochnuva kade prethodnata zavrshila pr: 1 * 3 = 3, 2 * 3 = 6...
 
             int end;
 
             if (i == m-1) {
-                end = n;
+                end = n; // za nishkata da odi do posledniot element
             }else{
-                end = start + chunkSize;
+                end = start + chunkSize; // primer ako sme na i=0, znachi 0 + 3 = 3, 3 + 3 = 6....
             }
             threads[i] = new MyThreads(a, b, start, end);
-            threads[i].start();
+            threads[i].start(); // go povikuvame run() za sekoja nishka
         }
 
         double result = 0;
 
         for (int i = 0; i < m; i++) {
-            threads[i].join();
+            threads[i].join(); // gi chkeame site nishki da zavrshat pa da gi soberime
             result += threads[i].getSum();
         }
 
