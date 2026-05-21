@@ -1,5 +1,7 @@
 package Lab4.ParallelVectorDifference;
 
+import java.util.Scanner;
+
 class MyThreads extends Thread {
     private double[] a;
     private double[] b;
@@ -35,13 +37,15 @@ public class ParallelVectorDifference {
 
         double[] a = new double[n];
         double[] b = new double[n];
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
 
         for (int i = 0; i < n; i++) {
             a[i] = i;
             b[i] = i + 5;
         }
 
-        int m=4;
+//        int m=4;
 
         MyThreads[]threads = new MyThreads[m];
 

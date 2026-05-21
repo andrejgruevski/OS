@@ -6,6 +6,7 @@ class Warehouse {
 
 
     // vo prvichniot kod vo klasite AddProduct i removeProduct stock < capacity = stock ++ i stock > 0 = stock--, so ova imame race condtition (povekje nishki menuvaat istovremeno zaednichka promenliva)
+
     // todo: sinhronizacija, wait, notifyAll,
     // producer da cheka ako magacinot e poln
     // consumer da cheka ako e prazen
